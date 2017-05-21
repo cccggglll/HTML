@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>抽式神啊抽式神</title>
+    <style>
+        body {
+            background: powderblue;
+            font-family: 微软雅黑;
+        }
+        
+        #bor {
+            border: 2px solid honeydew;
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        
+        #show {
+            border: 0px;
+            width: 90%;
+            height: 80px;
+            margin: 20px 32px;
+            font-size: 50px;
+            font-family: 微软雅黑;
+            text-align: center;
+            background: wheat;
+            border-radius: 5px;
+        }
+        
+        #button1 {
+            border: 0px;
+            margin: 30px 400px 20px 30px;
+            background: tomato;
+            width: 100px;
+            height: 60px;
+            font-size: 20px;
+            font-family: 微软雅黑;
+            border-radius: 5px;
+        }
+        
+        #button2 {
+            border: 0px;
+            background: tomato;
+            width: 100px;
+            height: 60px;
+            font-size: 20px;
+            font-family: 微软雅黑;
+            border-radius: 5px;
+        }
+        
+        .count {
+            border: 0px;
+            width: 80px;
+            height: 40px;
+            font-size: 20px;
+            font-family: 微软雅黑;
+            text-align: center;
+            margin: 10px 0 20px 68px;
+            border-radius: 5px;
+        }
+        
+        img {
+            margin-left: 200px;
+        }
+    </style>
+    <script>
+        var RNum = 0;
+        var SRNum = 0;
+        var SSRNum = 0;
+
+        function getRandomNum(Min, Max) {
+            var Range = Max - Min;
+            var Rand = Math.random();
+            return (Min + Math.round(Rand * Range));
+        }
+
+        function showResult(name) {
+            var s = document.getElementById('show');
+            s.value = name;
+        }
+
+        function RNumber() {
+            var s = document.getElementById('RCount');
+            s.value = RNum;
+        }
+
+        function SRNumber() {
+            var s = document.getElementById('SRCount');
+            s.value = SRNum;
+        }
+
+        function SSRNumber() {
+            var s = document.getElementById('SSRCount');
+            s.value = SSRNum;
+        }
+
+        function AllNumber() {
+            var s = document.getElementById('AllCount');
+            s.value = RNum + SRNum + SSRNum;
+        }
+
+        var RList = ["三尾狐", "座敷童子", "鲤鱼精", "九命猫", "狸猫", "河童", "童男", "童女", "饿鬼", "巫蛊师", "鸦天狗", "食发鬼", "武士之灵", "雨女", "蝴蝶精", "山童", "首无", "觉", "青蛙瓷器",
+            "独眼小僧", "铁鼠", "椒图", "管狐", "山兔", "萤草", "兵俑", "丑时之女", "跳跳弟弟", "跳跳妹妹", "古笼火"
+        ];
+        var SRList = ["桃花妖", "雪女", "鬼使白", "鬼使黑", "孟婆", "犬神", "骨女", "鬼女红叶", "跳跳哥哥",
+            "傀儡师", "海坊主", "判官", "凤凰火", "吸血姬", "妖狐", "妖琴师", "姑获鸟", "二口女", "白狼", "惠比寿",
+            "络新妇", "食梦貘", "清姬", "镰鼬", "樱花妖", "般若", "青坊主", "夜叉", "黑童子", "白童子", "烟烟罗",
+            "万年竹", "金鱼姬", "以津真天", "鸠"
+        ];
+        var SSRList = ["酒吞童子", "茨木童子", "荒川之主", "小鹿男", "大天狗", "阎魔", "妖刀姬",
+            "一目连", "青行灯", "花鸟卷", "辉夜姬", "荒", "彼岸花"
+        ];
+
+        function pick() {
+            var randomNum = getRandomNum(1, 100);
+            if (randomNum == 100) {
+                var getSSR = getRandomNum(0, 12);
+                SSRNum = SSRNum + 1;
+                showResult("SSR- " + SSRList[getSSR]);
+                SSRNumber();
+                AllNumber();
+                alert("！！！欧皇现世！！！");
+            } else if ((randomNum >= 1) && (randomNum <= 79)) {
+                var getR = getRandomNum(0, 29);
+                RNum = RNum + 1;
+                showResult("R- " + RList[getR]);
+                RNumber();
+                AllNumber();
+            } else if ((randomNum >= 80 && randomNum <= 99)) {
+                var getSR = getRandomNum(0, 34);
+                SRNum = SRNum + 1;
+                showResult("SR- " + SRList[getSR]);
+                SRNumber();
+                AllNumber();
+            }
+        }
+
+        function reset() {
+            location.reload([true]);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="bor">
+        <input type="text" id="show" value="(此处显示式神)" /><br />
+        <input type="button" value="召唤" id="button1" onclick="pick()" />
+        <input type="button" value="重置" id="button2" onclick="reset()" /><br />
+        <input type="text" class="count" id="AllCount" value="(总数)" />
+        <input type="text" class="count" id="RCount" value="(R)" />
+        <input type="text" class="count" id="SRCount" value="(SR)" />
+        <input type="text" class="count" id="SSRCount" value="(SSR)" />
+        <br />
+    </div>
+    <img src="img/left.jpg" /><img src="img/right.jpg" />
+</body>
+
+</html>
